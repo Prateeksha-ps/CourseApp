@@ -40,6 +40,8 @@ Thumbs.db
 **/.env.*.local
 frontend/.env
 backend/.env
+frontend/.env.production
+backend/.env.production
 
 # IDE files
 .vscode
