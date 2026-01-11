@@ -26,6 +26,18 @@ app.use('/api', registrationRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/students', studentRoutes);
 
+if (process.env.NODE_ENV === 'production') {
+  const staticDir = path.resolve(__dirname, './public');
+  app.use(express.static(staticDir));
+
+  app.get('*', (req, res, next) => {
+    if (req.path.startsWith('/api/')) {
+      return next();
+    }
+    res.sendFile(path.join(staticDir, 'index.html'));
+  });
+}
+
 app.use((err, req, res, next) => {
   console.error('Unhandled error:', err);
   res.status(err.status || 500).json({ message: err.message || 'Internal Server Error' });

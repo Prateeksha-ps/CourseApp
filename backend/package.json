@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "build:frontend": "npm install --prefix ../frontend && npm run build --prefix ../frontend",
+    "render-build": "npm run build:frontend"
   },
   "dependencies": {
     "cors": "^2.8.5",

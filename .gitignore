@@ -28,6 +28,7 @@ frontend/dist
 # Build output
 backend/dist
 frontend/build
+backend/public
 
 # Debug logs
 .DS_Store
