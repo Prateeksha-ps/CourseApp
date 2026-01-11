@@ -4,10 +4,11 @@
   "version": "1.0.0",
   "description": "Course Registration & Certification frontend",
   "scripts": {
-    "start": "vite",
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview --host 0.0.0.0 --port 4173",
+    "start": "npm run preview",
+    "render-build": "npm run build"
   },
   "dependencies": {
     "react": "^18.3.1",
