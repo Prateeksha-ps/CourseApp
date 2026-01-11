@@ -1,6 +1,7 @@
 const DEFAULT_API_BASE_URL = `${window.location.origin}/api`;
-const rawBaseUrl = import.meta.env.VITE_API_URL;
-const API_BASE_URL = (rawBaseUrl ? rawBaseUrl : DEFAULT_API_BASE_URL).replace(/\/$/, '');
+const rawBaseUrl = import.meta.env.VITE_API_URL?.trim();
+const isLocalOverride = rawBaseUrl && /^https?:\/\/localhost(?::\d+)?/i.test(rawBaseUrl);
+const API_BASE_URL = ((rawBaseUrl && !isLocalOverride) ? rawBaseUrl : DEFAULT_API_BASE_URL).replace(/\/$/, '');
 
 async function request(path, { method = 'GET', body, headers, ...rest } = {}) {
   const response = await fetch(`${API_BASE_URL}${path}`, {
